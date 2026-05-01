@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://b753jrxv6u4ga"]
+
+[ext_resource type="Script" uid="uid://cvjvmxwhaklfc" path="res://scenes/entities/scripts/Scrapper.gd" id="1_8drws"]
+[ext_resource type="Texture2D" uid="uid://cap4dixh51aic" path="res://assets/image/Ant.png" id="1_24cvo"]
+[ext_resource type="Script" uid="uid://l3lbote7p0oe" path="res://scenes/entities/scripts/DamageArea.gd" id="3_b2okb"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8drws"]
+animation = &"flash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b2okb"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7wdfh"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_l806g"]
+mix_mode = 1
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_7jr0j"]
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "walk"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_33ghy"]
+graph_offset = Vector2(-3.035791, -20.970692)
+nodes/output/position = Vector2(928, 144)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_7wdfh")
+nodes/Animation/position = Vector2(224, 208)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_8drws")
+"nodes/Animation 2/position" = Vector2(224, 432)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_b2okb")
+"nodes/Animation 3/position" = Vector2(224, 32)
+nodes/Transition/node = SubResource("AnimationNodeTransition_7jr0j")
+nodes/Transition/position = Vector2(432, 112)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_l806g")
+nodes/OneShot/position = Vector2(656, 208)
+node_connections = [&"output", 0, &"OneShot", &"Transition", 0, &"Animation 3", &"Transition", 1, &"Animation", &"OneShot", 0, &"Transition", &"OneShot", 1, &"Animation 2"]
+
+[sub_resource type="Animation" id="Animation_b2okb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7wdfh"]
+resource_name = "flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.000109282875),
+"update": 0,
+"values": [Color(18.892157, 18.892157, 18.892157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l806g"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_8drws"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2okb"]
+_data = {
+&"RESET": SubResource("Animation_b2okb"),
+&"flash": SubResource("Animation_7wdfh"),
+&"idle": SubResource("Animation_l806g"),
+&"walk": SubResource("Animation_8drws")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24cvo"]
+size = Vector2(18, 19.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2okb"]
+radius = 400.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wdfh"]
+radius = 4.0
+height = 22.0
+
+[node name="Scrapper" type="CharacterBody2D" unique_id=1831826209]
+script = ExtResource("1_8drws")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=595209721]
+rotation = 4.712389
+texture = ExtResource("1_24cvo")
+offset = Vector2(0, -3)
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite2D" unique_id=688296682]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendTree_33ghy")
+anim_player = NodePath("AnimationPlayer")
+parameters/Transition/current_state = "walk"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 1
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/AnimationTree" unique_id=1956853266]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_b2okb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=487747475]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_24cvo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1048130118]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1642345524]
+shape = SubResource("CircleShape2D_b2okb")
+debug_color = Color(0.7221645, 0.46989524, 0.2597694, 0.41960785)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=527485531]
+script = ExtResource("3_b2okb")
+damage = 40.0
+cooldown = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1471999493]
+position = Vector2(13, -1)
+shape = SubResource("CapsuleShape2D_7wdfh")
+debug_color = Color(0, 0.60038817, 0, 0.42000002)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_detection_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]

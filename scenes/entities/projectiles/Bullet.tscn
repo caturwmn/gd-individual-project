@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cmxsrglg00w5i"]
+
+[ext_resource type="Texture2D" uid="uid://bgn4rp30nyjb1" path="res://assets/image/Bullet.png" id="1_04vub"]
+[ext_resource type="Script" uid="uid://div28j8nkycqg" path="res://scenes/entities/scripts/bullet.gd" id="1_yiv65"]
+[ext_resource type="PackedScene" uid="uid://bq0csic5qqria" path="res://scenes/effects/Hit Effect.tscn" id="2_exvne"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_exvne"]
+blend_mode = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yiv65"]
+radius = 4.0
+height = 28.0
+
+[node name="Bullet" type="Area2D" unique_id=295781165]
+material = SubResource("CanvasItemMaterial_exvne")
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_yiv65")
+hit_effect = ExtResource("2_exvne")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302018384]
+texture = ExtResource("1_04vub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1308881827]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yiv65")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

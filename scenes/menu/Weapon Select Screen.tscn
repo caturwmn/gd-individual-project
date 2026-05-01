@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://sqwg51d3oqyt"]
+
+[ext_resource type="FontFile" uid="uid://bti1mo2qra8df" path="res://assets/fonts/BlackOpsOne-Regular.ttf" id="1_1fqos"]
+[ext_resource type="Script" uid="uid://4gjn73edyolt" path="res://scenes/menu/WeaponSelectorScript.gd" id="1_54spi"]
+[ext_resource type="PackedScene" uid="uid://ck4s2850hycve" path="res://scenes/entities/SMG.tscn" id="2_c6e2e"]
+[ext_resource type="FontFile" uid="uid://cpx41gv8wwuvc" path="res://assets/fonts/Michroma-Regular.ttf" id="2_xbvdk"]
+[ext_resource type="Texture2D" uid="uid://td6scqks025d" path="res://assets/image/SMG.png" id="3_hjvsg"]
+[ext_resource type="PackedScene" uid="uid://pn0cnlicbhpi" path="res://scenes/menu/Weapon Selection.tscn" id="3_xbvdk"]
+[ext_resource type="PackedScene" uid="uid://crt4c7787ur3i" path="res://scenes/entities/AR.tscn" id="3_xnvru"]
+[ext_resource type="PackedScene" uid="uid://b7ww54f5d215u" path="res://scenes/entities/Rifle.tscn" id="4_l0rf8"]
+[ext_resource type="Texture2D" uid="uid://doerfpoyc1y13" path="res://assets/image/AR.png" id="5_1fqos"]
+[ext_resource type="Texture2D" uid="uid://csm0ioa3h255x" path="res://assets/image/Rifle.png" id="10_eqdjm"]
+
+[sub_resource type="Gradient" id="Gradient_6fnnl"]
+offsets = PackedFloat32Array(0.5570342, 1)
+colors = PackedColorArray(0.03876, 0.03876, 0.03876, 0, 0.60038817, 1, 1, 0.21000001)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l8ige"]
+gradient = SubResource("Gradient_6fnnl")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_l8ige"]
+offsets = PackedFloat32Array(0.99809885, 1)
+colors = PackedColorArray(0.51480377, 1.353256, 1.353256, 0.1, 0, 0.9593466, 1, 0.305)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vb5bv"]
+gradient = SubResource("Gradient_l8ige")
+width = 512
+height = 512
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="FontVariation" id="FontVariation_l8ige"]
+base_font = ExtResource("1_1fqos")
+spacing_top = 6
+
+[sub_resource type="FontVariation" id="FontVariation_1fqos"]
+base_font = ExtResource("2_xbvdk")
+
+[sub_resource type="FontVariation" id="FontVariation_l0rf8"]
+base_font = ExtResource("2_xbvdk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqdjm"]
+bg_color = Color(0.92995733, 0.7062913, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="WeaponSelectScreen" type="Control" unique_id=987023410]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_54spi")
+weapon_scenes = Array[PackedScene]([ExtResource("2_c6e2e"), ExtResource("3_xnvru"), ExtResource("4_l0rf8")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=251152232]
+z_index = -2
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1352742088]
+z_index = -1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_l8ige")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=846524456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1155528315]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_vb5bv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1453218573]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1495513614]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6681772, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_l8ige")
+theme_override_font_sizes/font_size = 28
+text = "  Weapon Select"
+
+[node name="Line2D" type="Line2D" parent="MarginContainer" unique_id=599811513]
+position = Vector2(-35, -38)
+points = PackedVector2Array(49, 91, 1129, 91)
+width = 2.0
+default_color = Color(0.6583885, 1, 1, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=433641618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 95.0
+offset_right = -36.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=1216404030]
+layout_mode = 2
+theme_override_constants/separation = 360
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" unique_id=1446742231]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" unique_id=201955091]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_1fqos")
+theme_override_font_sizes/font_size = 20
+text = "   Main Weapon:"
+
+[node name="MainSMG" parent="MarginContainer2/VBoxContainer/HBoxContainer" unique_id=677507008 instance=ExtResource("3_xbvdk")]
+layout_mode = 2
+weapon_sprite = ExtResource("3_hjvsg")
+
+[node name="MainAR" parent="MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1358682047 instance=ExtResource("3_xbvdk")]
+layout_mode = 2
+weapon_sprite = ExtResource("5_1fqos")
+weapon_name = "AR"
+
+[node name="MainRifle" parent="MarginContainer2/VBoxContainer/HBoxContainer" unique_id=738056285 instance=ExtResource("3_xbvdk")]
+layout_mode = 2
+weapon_sprite = ExtResource("10_eqdjm")
+weapon_name = "Rifle"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" unique_id=1562058716]
+layout_mode = 2
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=2000107647]
+z_index = 1
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_l0rf8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqdjm")
+text = "Confirm Loadout"

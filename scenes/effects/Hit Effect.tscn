@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bq0csic5qqria"]
+
+[ext_resource type="Texture2D" uid="uid://bt3v2df7fj5bc" path="res://assets/image/material/spark.png" id="1_esylm"]
+[ext_resource type="Script" uid="uid://debry7exjbk1q" path="res://scenes/effects/HitEffect.gd" id="1_ivn5f"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_esylm"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_l6jnl"]
+offsets = PackedFloat32Array(0, 0.1746988, 0.4678715, 1)
+colors = PackedColorArray(0.80784315, 0.31764707, 0.20784314, 0, 2.150057, 1.0259383, 0.271703, 1, 0.46472818, 0.10462071, 0.031264625, 1, 0.84313726, 0.09803922, 0.09019608, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_esylm"]
+gradient = SubResource("Gradient_l6jnl")
+
+[sub_resource type="Curve" id="Curve_dgppt"]
+_data = [Vector2(0, 0.41072416), 0.0, 0.0, 0, 0, Vector2(0.9964665, 0.8634605), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tu2rj"]
+_data = [Vector2(0, 0.6263129), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6m0t5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_31ebr"]
+curve_x = SubResource("Curve_dgppt")
+curve_y = SubResource("Curve_tu2rj")
+curve_z = SubResource("Curve_6m0t5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ivn5f"]
+resource_local_to_scene = true
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 99.24
+initial_velocity_max = 122.31
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.01
+scale_curve = SubResource("CurveXYZTexture_31ebr")
+color_ramp = SubResource("GradientTexture1D_esylm")
+hue_variation_min = -0.030000022
+hue_variation_max = 0.059999976
+
+[node name="HitEffect" type="Node2D" unique_id=583008648]
+script = ExtResource("1_ivn5f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1328314353]
+material = SubResource("CanvasItemMaterial_esylm")
+emitting = false
+amount = 6
+texture = ExtResource("1_esylm")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 0.75
+randomness = 0.75
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ivn5f")

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bv0trfhawa5fg"]
+
+[ext_resource type="Script" uid="uid://biqgc44hbyhgw" path="res://scenes/entities/scripts/Player.gd" id="1_o7et6"]
+[ext_resource type="Texture2D" uid="uid://b23wvmuqiwquj" path="res://assets/image/Player Unit N.png" id="2_yjynp"]
+[ext_resource type="PackedScene" uid="uid://ufr3dx8y3ufy" path="res://scenes/effects/Spark.tscn" id="3_j1g85"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2m2ha"]
+radius = 16.03122
+
+[node name="Player" type="CharacterBody2D" unique_id=356878968]
+script = ExtResource("1_o7et6")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=1639108038]
+z_index = 2
+rotation = 4.712389
+texture = ExtResource("2_yjynp")
+offset = Vector2(0, 22)
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Torso" type="Sprite2D" parent="." unique_id=1587752148]
+z_index = 1
+rotation = 4.712389
+texture = ExtResource("2_yjynp")
+offset = Vector2(0, 8)
+region_enabled = true
+region_rect = Rect2(64, 0, 64, 64)
+
+[node name="Legs" type="Sprite2D" parent="." unique_id=865945133]
+rotation = 4.712389
+texture = ExtResource("2_yjynp")
+offset = Vector2(0, 8)
+region_enabled = true
+region_rect = Rect2(0, 64, 64, 64)
+
+[node name="Spark" parent="Legs" unique_id=583008648 instance=ExtResource("3_j1g85")]
+z_index = -1
+position = Vector2(-9, -18)
+
+[node name="Spark2" parent="Legs" unique_id=1276596308 instance=ExtResource("3_j1g85")]
+z_index = -1
+position = Vector2(9, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1248268556]
+shape = SubResource("CircleShape2D_2m2ha")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=56816907]
+physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+
+[node name="MainWeapon" type="Node2D" parent="." unique_id=1740647871]
+position = Vector2(5, 13)

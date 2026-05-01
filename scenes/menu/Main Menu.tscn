@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://b4oywfsc6fhnr"]
+
+[ext_resource type="FontFile" uid="uid://cpx41gv8wwuvc" path="res://assets/fonts/Michroma-Regular.ttf" id="1_7svta"]
+[ext_resource type="Script" uid="uid://blg8yqgsjj5ex" path="res://scenes/menu/MainMenu.gd" id="1_fp07o"]
+[ext_resource type="FontFile" uid="uid://bti1mo2qra8df" path="res://assets/fonts/BlackOpsOne-Regular.ttf" id="2_ivi08"]
+[ext_resource type="FontFile" uid="uid://lqwjj3kbr7xx" path="res://assets/fonts/Audiowide-Regular.ttf" id="3_ivi08"]
+
+[sub_resource type="FontVariation" id="FontVariation_fp07o"]
+base_font = ExtResource("1_7svta")
+variation_embolden = -0.3
+
+[sub_resource type="FontVariation" id="FontVariation_56qqr"]
+base_font = ExtResource("2_ivi08")
+variation_embolden = -0.25
+spacing_glyph = 1
+spacing_space = 1
+spacing_top = -3
+spacing_bottom = -5
+
+[sub_resource type="FontVariation" id="FontVariation_6fnnl"]
+base_font = ExtResource("3_ivi08")
+variation_embolden = -0.54
+
+[sub_resource type="Gradient" id="Gradient_ivi08"]
+offsets = PackedFloat32Array(0.5570342, 1)
+colors = PackedColorArray(0.03876, 0.03876, 0.03876, 0, 0.60038817, 1, 1, 0.21000001)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6fgbm"]
+gradient = SubResource("Gradient_ivi08")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="MainMenu" type="MarginContainer" unique_id=164646651]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_fp07o")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=967669436]
+z_index = -2
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=201587323]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer" unique_id=1219623084]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2" unique_id=1355642154]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -5
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer2/VBoxContainer" unique_id=2037739471]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_fp07o")
+theme_override_font_sizes/font_size = 14
+text = "Project:"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer2/VBoxContainer" unique_id=631393744]
+layout_mode = 2
+theme_override_colors/font_color = Color(1.218231, 1.1555225, 0.5670453, 1)
+theme_override_fonts/font = SubResource("FontVariation_56qqr")
+theme_override_font_sizes/font_size = 32
+text = "  Fatal Orbit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer2" unique_id=565678859]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2/HBoxContainer" unique_id=1561556008]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LinkButton" type="LinkButton" parent="CenterContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=415049169]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_6fnnl")
+theme_override_font_sizes/font_size = 18
+text = "Start Game"
+underline = 2
+
+[node name="LinkButton3" type="LinkButton" parent="CenterContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1156238320]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_6fnnl")
+theme_override_font_sizes/font_size = 18
+text = "Exit Game"
+underline = 2
+
+[node name="ColorRect2" type="TextureRect" parent="." unique_id=1884251915]
+z_index = -1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_6fgbm")

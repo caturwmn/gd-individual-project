@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b7ww54f5d215u"]
+
+[ext_resource type="Script" uid="uid://rma7padnexw7" path="res://scenes/entities/scripts/Weapon.gd" id="1_i0dxq"]
+[ext_resource type="PackedScene" uid="uid://cmxsrglg00w5i" path="res://scenes/entities/projectiles/Bullet.tscn" id="2_ft7b1"]
+[ext_resource type="Texture2D" uid="uid://csm0ioa3h255x" path="res://assets/image/Rifle.png" id="3_i0dxq"]
+
+[node name="Rifle" type="Node2D" unique_id=1544727113]
+script = ExtResource("1_i0dxq")
+bullet_scene = ExtResource("2_ft7b1")
+fire_rate = 1.5
+bullet_speed = 1000.0
+max_distance = 800.0
+damage = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=386702682]
+position = Vector2(14, 0)
+texture = ExtResource("3_i0dxq")
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=966056973]
+position = Vector2(12, -0.5)

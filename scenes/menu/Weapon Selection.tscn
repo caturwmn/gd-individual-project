@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://pn0cnlicbhpi"]
+
+[ext_resource type="Script" uid="uid://o83gw0c41obg" path="res://scenes/menu/weapon_selection.gd" id="1_0rvq6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sc825"]
+bg_color = Color(0, 0, 0, 0.2)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7863807, 0.7772606, 0.8001019, 0.24800001)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rvq6"]
+bg_color = Color(0, 0, 0, 0.2)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.92021066, 0.5449209, 0.27619392, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="PanelContainer" type="Button" unique_id=738056285]
+custom_minimum_size = Vector2(180, 80)
+anchors_preset = -1
+anchor_right = 0.16100001
+anchor_bottom = 0.119
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_sc825")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0rvq6")
+toggle_mode = true
+script = ExtResource("1_0rvq6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1032502781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=571139018]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=454745302]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2001785765]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = "SMG"
