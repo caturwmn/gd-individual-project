@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://biqgc44hbyhgw" path="res://scenes/entities/scripts/Player.gd" id="1_o7et6"]
 [ext_resource type="Texture2D" uid="uid://b23wvmuqiwquj" path="res://assets/image/Player Unit N.png" id="2_yjynp"]
 [ext_resource type="PackedScene" uid="uid://ufr3dx8y3ufy" path="res://scenes/effects/Spark.tscn" id="3_j1g85"]
+[ext_resource type="PackedScene" uid="uid://b26d4x7dfc35s" path="res://scenes/entities/MissileLauncher.tscn" id="4_yjynp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2m2ha"]
 radius = 16.03122
@@ -42,6 +43,7 @@ z_index = -1
 position = Vector2(9, -18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1248268556]
+position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_2m2ha")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=56816907]
@@ -52,3 +54,7 @@ position_smoothing_speed = 4.0
 
 [node name="MainWeapon" type="Node2D" parent="." unique_id=1740647871]
 position = Vector2(5, 13)
+
+[node name="MissileLauncher" parent="." unique_id=1544727113 instance=ExtResource("4_yjynp")]
+z_index = 1
+position = Vector2(2, -14)

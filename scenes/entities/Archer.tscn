@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://b753jrxv6u4ga"]
+[gd_scene format=3 uid="uid://bs5ke7773bqv8"]
 
-[ext_resource type="Script" uid="uid://cvjvmxwhaklfc" path="res://scenes/entities/scripts/Scrapper.gd" id="1_8drws"]
-[ext_resource type="Texture2D" uid="uid://cap4dixh51aic" path="res://assets/image/Ant.png" id="1_24cvo"]
-[ext_resource type="Script" uid="uid://l3lbote7p0oe" path="res://scenes/entities/scripts/DamageArea.gd" id="3_b2okb"]
-[ext_resource type="Texture2D" uid="uid://cg7iyt431j0uu" path="res://assets/image/Cursor.png" id="4_7wdfh"]
+[ext_resource type="Script" uid="uid://xm2imdajd4nn" path="res://scenes/entities/archer.gd" id="1_m1506"]
+[ext_resource type="PackedScene" uid="uid://cmxsrglg00w5i" path="res://scenes/entities/projectiles/Bullet.tscn" id="2_76sjb"]
+[ext_resource type="Texture2D" uid="uid://ch4ghvk2n42uh" path="res://assets/image/ArcherAnt.png" id="2_m1506"]
+[ext_resource type="Texture2D" uid="uid://cg7iyt431j0uu" path="res://assets/image/Cursor.png" id="4_76sjb"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8drws"]
 animation = &"flash"
@@ -128,21 +128,18 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24cvo"]
-size = Vector2(18, 19.5)
+size = Vector2(16, 21.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2okb"]
-radius = 400.0
+radius = 500.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wdfh"]
-radius = 4.0
-height = 22.0
-
-[node name="Scrapper" type="CharacterBody2D" unique_id=1831826209]
-script = ExtResource("1_8drws")
+[node name="Archer" type="CharacterBody2D" unique_id=1831826209]
+script = ExtResource("1_m1506")
+bullet_scene = ExtResource("2_76sjb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=595209721]
 rotation = 4.712389
-texture = ExtResource("1_24cvo")
+texture = ExtResource("2_m1506")
 offset = Vector2(0, -3)
 hframes = 2
 vframes = 2
@@ -162,8 +159,14 @@ parameters/OneShot/request = 0
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_b2okb")
 
+[node name="Node2D" type="Node2D" parent="Sprite2D" unique_id=1889699482]
+position = Vector2(7, 12)
+
+[node name="Node2D2" type="Node2D" parent="Sprite2D" unique_id=297611659]
+position = Vector2(-7, 12)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=487747475]
-position = Vector2(0, -0.75)
+position = Vector2(-3, 0.25)
 shape = SubResource("RectangleShape2D_24cvo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1048130118]
@@ -172,20 +175,9 @@ shape = SubResource("RectangleShape2D_24cvo")
 shape = SubResource("CircleShape2D_b2okb")
 debug_color = Color(0.7221645, 0.46989524, 0.2597694, 0.41960785)
 
-[node name="DamageArea" type="Area2D" parent="." unique_id=527485531]
-script = ExtResource("3_b2okb")
-damage = 40.0
-cooldown = 0.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1471999493]
-position = Vector2(13, -1)
-shape = SubResource("CapsuleShape2D_7wdfh")
-debug_color = Color(0, 0.60038817, 0, 0.42000002)
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=611684222]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=2005745355]
 visible = false
-texture = ExtResource("4_7wdfh")
+texture = ExtResource("4_76sjb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_detection_body_exited"]
-[connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]

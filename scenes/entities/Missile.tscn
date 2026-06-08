@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bkemeiqo1exrn"]
+
+[ext_resource type="Script" uid="uid://bqeigy0rhtrrt" path="res://scenes/entities/scripts/missile.gd" id="1_0sc8w"]
+[ext_resource type="Texture2D" uid="uid://dd04no0462dvl" path="res://assets/image/Missile.png" id="2_0sc8w"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_exvne"]
+blend_mode = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yiv65"]
+radius = 23.333332
+height = 46.666664
+
+[node name="Missile" type="Area2D" unique_id=295781165]
+material = SubResource("CanvasItemMaterial_exvne")
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_0sc8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302018384]
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("2_0sc8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1308881827]
+position = Vector2(3.3158663e-14, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yiv65")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

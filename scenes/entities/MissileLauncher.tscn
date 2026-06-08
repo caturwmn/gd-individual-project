@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b26d4x7dfc35s"]
+
+[ext_resource type="Script" uid="uid://b315vpwc8hrid" path="res://scenes/entities/scripts/missile_launcher.gd" id="1_05hn3"]
+[ext_resource type="Texture2D" uid="uid://cv3c2mmlo11x7" path="res://assets/image/MissileLauncher.png" id="2_05hn3"]
+[ext_resource type="PackedScene" uid="uid://bkemeiqo1exrn" path="res://scenes/entities/Missile.tscn" id="2_v3a5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al3c4"]
+size = Vector2(317, 162)
+
+[node name="MissileLauncher" type="Node2D" unique_id=1544727113]
+script = ExtResource("1_05hn3")
+bullet_scene = ExtResource("2_v3a5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=386702682]
+texture = ExtResource("2_05hn3")
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=966056973]
+position = Vector2(1, -2)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=328635007]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=493223753]
+position = Vector2(205.5, 7)
+shape = SubResource("RectangleShape2D_al3c4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

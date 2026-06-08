@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var acceleration = 30
 @export var health: float = 100
 @onready var animation_tree: AnimationTree = $Sprite2D/AnimationTree
+@onready var locked_sprite = $Sprite2D2
 
 var player: Node2D = null
 
@@ -50,3 +51,6 @@ func take_damage(amount):
 func die():
 	get_tree().current_scene.get_node("MissionManager").unregister_enemy()
 	queue_free()
+	
+func locked(state: bool):
+	locked_sprite.visible = state
